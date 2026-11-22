@@ -23,20 +23,20 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.View;
 
 import cn.bingoogolapple.photopicker.R;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/24 下午4:23
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/24 涓嬪崍4:23
+ * 鎻忚堪:
  */
 public class BGAImageView extends AppCompatImageView {
     private int mDefaultImageId;

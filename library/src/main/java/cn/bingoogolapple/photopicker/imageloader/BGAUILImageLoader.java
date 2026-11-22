@@ -17,7 +17,7 @@ package cn.bingoogolapple.photopicker.imageloader;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -32,9 +32,9 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 import cn.bingoogolapple.baseadapter.BGABaseAdapterUtil;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/25 下午5:39
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/25 涓嬪崍5:39
+ * 鎻忚堪:
  */
 public class BGAUILImageLoader extends BGAImageLoader {
 

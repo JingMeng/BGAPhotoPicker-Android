@@ -19,10 +19,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.core.view.ViewPropertyAnimatorListenerAdapter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,9 +46,9 @@ import cn.bingoogolapple.photopicker.widget.BGAHackyViewPager;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/24 下午2:59
- * 描述:图片预览界面
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/24 涓嬪崍2:59
+ * 鎻忚堪:鍥剧墖棰勮鐣岄潰
  */
 public class BGAPhotoPreviewActivity extends BGAPPToolbarActivity implements PhotoViewAttacher.OnViewTapListener, BGAAsyncTask.Callback<Void> {
     private static final String EXTRA_SAVE_PHOTO_DIR = "EXTRA_SAVE_PHOTO_DIR";
@@ -68,8 +68,7 @@ public class BGAPhotoPreviewActivity extends BGAPPToolbarActivity implements Pho
     private BGASavePhotoTask mSavePhotoTask;
 
     /**
-     * 上一次标题栏显示或隐藏的时间戳
-     */
+     * 涓婁竴娆℃爣棰樻爮鏄剧ず鎴栭殣钘忕殑鏃堕棿鎴?     */
     private long mLastShowHiddenTime;
 
     public static class IntentBuilder {
@@ -80,7 +79,7 @@ public class BGAPhotoPreviewActivity extends BGAPPToolbarActivity implements Pho
         }
 
         /**
-         * 保存图片的目录，如果传 null，则没有保存图片功能
+         * 淇濆瓨鍥剧墖鐨勭洰褰曪紝濡傛灉浼?null锛屽垯娌℃湁淇濆瓨鍥剧墖鍔熻兘
          */
         public IntentBuilder saveImgDir(@Nullable File saveImgDir) {
             mIntent.putExtra(EXTRA_SAVE_PHOTO_DIR, saveImgDir);
@@ -88,24 +87,21 @@ public class BGAPhotoPreviewActivity extends BGAPPToolbarActivity implements Pho
         }
 
         /**
-         * 当前预览的图片路径
-         */
+         * 褰撳墠棰勮鐨勫浘鐗囪矾寰?         */
         public IntentBuilder previewPhoto(String photoPath) {
             mIntent.putStringArrayListExtra(EXTRA_PREVIEW_PHOTOS, new ArrayList<>(Arrays.asList(photoPath)));
             return this;
         }
 
         /**
-         * 当前预览的图片路径集合
-         */
+         * 褰撳墠棰勮鐨勫浘鐗囪矾寰勯泦鍚?         */
         public IntentBuilder previewPhotos(ArrayList<String> previewPhotos) {
             mIntent.putStringArrayListExtra(EXTRA_PREVIEW_PHOTOS, previewPhotos);
             return this;
         }
 
         /**
-         * 当前预览的图片索引
-         */
+         * 褰撳墠棰勮鐨勫浘鐗囩储寮?         */
         public IntentBuilder currentPosition(int currentPosition) {
             mIntent.putExtra(EXTRA_CURRENT_POSITION, currentPosition);
             return this;
@@ -150,7 +146,7 @@ public class BGAPhotoPreviewActivity extends BGAPPToolbarActivity implements Pho
         mContentHvp.setAdapter(mPhotoPageAdapter);
         mContentHvp.setCurrentItem(currentPosition);
 
-        // 过2秒隐藏标题栏
+        // 杩?绉掗殣钘忔爣棰樻爮
         mToolbar.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -246,7 +242,6 @@ public class BGAPhotoPreviewActivity extends BGAPPToolbarActivity implements Pho
             }
         }
 
-        // 通过MD5加密url生成文件名，避免多次保存同一张图片
         file = new File(mSavePhotoDir, BGAPhotoPickerUtil.md5(url) + ".png");
         if (file.exists()) {
             BGAPhotoPickerUtil.showSafe(getString(R.string.bga_pp_save_img_success_folder, mSavePhotoDir.getAbsolutePath()));

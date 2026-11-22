@@ -2,11 +2,11 @@
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:8.2.1'
 
 //        classpath 'com.novoda:bintray-release:0.8.0'
     }
@@ -14,11 +14,20 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+            content { includeGroup 'cn.bingoogolapple' }
+        }
+        mavenCentral()
         google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+tasks.withType(JavaCompile).configureEach {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }

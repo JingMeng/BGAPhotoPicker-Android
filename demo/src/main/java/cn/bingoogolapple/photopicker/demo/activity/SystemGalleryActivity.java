@@ -1,10 +1,10 @@
-package cn.bingoogolapple.photopicker.demo.activity;
+﻿package cn.bingoogolapple.photopicker.demo.activity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -21,7 +21,7 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
- * 你自己项目里「可以不继承 BGAPPToolbarActivity」，我在这里继承 BGAPPToolbarActivity 只是为了方便写 Demo
+ * 浣犺嚜宸遍」鐩噷銆屽彲浠ヤ笉缁ф壙 BGAPPToolbarActivity銆嶏紝鎴戝湪杩欓噷缁ф壙 BGAPPToolbarActivity 鍙槸涓轰簡鏂逛究鍐?Demo
  */
 public class SystemGalleryActivity extends BGAPPToolbarActivity implements EasyPermissions.PermissionCallbacks {
     private static final int REQUEST_CODE_PERMISSION_CHOOSE_PHOTO = 1;
@@ -47,10 +47,9 @@ public class SystemGalleryActivity extends BGAPPToolbarActivity implements EasyP
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
-        setTitle("系统相册选择图片、裁剪");
+        setTitle("绯荤粺鐩稿唽閫夋嫨鍥剧墖銆佽鍓?);
 
-        // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话就没有拍照功能
-        File takePhotoDir = new File(Environment.getExternalStorageDirectory(), "BGAPhotoPickerTakePhoto");
+        // 鎷嶇収鍚庣収鐗囩殑瀛樻斁鐩綍锛屾敼鎴愪綘鑷繁鎷嶇収鍚庤瀛樻斁鐓х墖鐨勭洰褰曘€傚鏋滀笉浼犻€掕鍙傛暟鐨勮瘽灏辨病鏈夋媿鐓у姛鑳?        File takePhotoDir = new File(Environment.getExternalStorageDirectory(), "BGAPhotoPickerTakePhoto");
         mPhotoHelper = new BGAPhotoHelper(takePhotoDir);
     }
 
@@ -80,7 +79,7 @@ public class SystemGalleryActivity extends BGAPPToolbarActivity implements EasyP
         if (EasyPermissions.hasPermissions(this, perms)) {
             startActivityForResult(mPhotoHelper.getChooseSystemGalleryIntent(), REQUEST_CODE_CHOOSE_PHOTO);
         } else {
-            EasyPermissions.requestPermissions(this, "请开起存储空间权限，以正常使用 Demo", REQUEST_CODE_PERMISSION_CHOOSE_PHOTO, perms);
+            EasyPermissions.requestPermissions(this, "璇峰紑璧峰瓨鍌ㄧ┖闂存潈闄愶紝浠ユ甯镐娇鐢?Demo", REQUEST_CODE_PERMISSION_CHOOSE_PHOTO, perms);
         }
     }
 
@@ -94,7 +93,7 @@ public class SystemGalleryActivity extends BGAPPToolbarActivity implements EasyP
                 BGAPhotoPickerUtil.show(R.string.bga_pp_not_support_take_photo);
             }
         } else {
-            EasyPermissions.requestPermissions(this, "请开起存储空间和相机权限，以正常使用 Demo", REQUEST_CODE_PERMISSION_TAKE_PHOTO, perms);
+            EasyPermissions.requestPermissions(this, "璇峰紑璧峰瓨鍌ㄧ┖闂村拰鐩告満鏉冮檺锛屼互姝ｅ父浣跨敤 Demo", REQUEST_CODE_PERMISSION_TAKE_PHOTO, perms);
         }
     }
 

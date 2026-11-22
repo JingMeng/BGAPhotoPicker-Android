@@ -1,10 +1,10 @@
-package cn.bingoogolapple.photopicker.demo.activity;
+﻿package cn.bingoogolapple.photopicker.demo.activity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -25,7 +25,7 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
- * 你自己项目里「可以不继承 BGAPPToolbarActivity」，我在这里继承 BGAPPToolbarActivity 只是为了方便写 Demo
+ * 浣犺嚜宸遍」鐩噷銆屽彲浠ヤ笉缁ф壙 BGAPPToolbarActivity銆嶏紝鎴戝湪杩欓噷缁ф壙 BGAPPToolbarActivity 鍙槸涓轰簡鏂逛究鍐?Demo
  */
 public class MomentAddActivity extends BGAPPToolbarActivity implements EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate {
     private static final int PRC_PHOTO_PICKER = 1;
@@ -35,35 +35,29 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements EasyPermi
 
     private static final String EXTRA_MOMENT = "EXTRA_MOMENT";
 
-    // ==================================== 测试图片选择器 START ====================================
+    // ==================================== 娴嬭瘯鍥剧墖閫夋嫨鍣?START ====================================
     /**
-     * 是否是单选「测试接口用的」
-     */
+     * 鏄惁鏄崟閫夈€屾祴璇曟帴鍙ｇ敤鐨勩€?     */
     private CheckBox mSingleChoiceCb;
     /**
-     * 是否具有拍照功能「测试接口用的」
-     */
+     * 鏄惁鍏锋湁鎷嶇収鍔熻兘銆屾祴璇曟帴鍙ｇ敤鐨勩€?     */
     private CheckBox mTakePhotoCb;
-    // ==================================== 测试图片选择器 END ====================================
+    // ==================================== 娴嬭瘯鍥剧墖閫夋嫨鍣?END ====================================
 
-    // ==================================== 测试拖拽排序九宫格图片控件 START ====================================
+    // ==================================== 娴嬭瘯鎷栨嫿鎺掑簭涔濆鏍煎浘鐗囨帶浠?START ====================================
     /**
-     * 是否可编辑
-     */
+     * 鏄惁鍙紪杈?     */
     private CheckBox mEditableCb;
     /**
-     * 是否显示九图控件的加号按钮「测试接口用的」
-     */
+     * 鏄惁鏄剧ず涔濆浘鎺т欢鐨勫姞鍙锋寜閽€屾祴璇曟帴鍙ｇ敤鐨勩€?     */
     private CheckBox mPlusCb;
     /**
-     * 是否开启拖拽排序功能「测试接口用的」
-     */
+     * 鏄惁寮€鍚嫋鎷芥帓搴忓姛鑳姐€屾祴璇曟帴鍙ｇ敤鐨勩€?     */
     private CheckBox mSortableCb;
     /**
-     * 拖拽排序九宫格控件
-     */
+     * 鎷栨嫿鎺掑簭涔濆鏍兼帶浠?     */
     private BGASortableNinePhotoLayout mPhotosSnpl;
-    // ==================================== 测试拖拽排序九宫格图片控件 END ====================================
+    // ==================================== 娴嬭瘯鎷栨嫿鎺掑簭涔濆鏍煎浘鐗囨帶浠?END ====================================
 
     private EditText mContentEt;
 
@@ -117,13 +111,12 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements EasyPermi
             }
         });
 
-        // 设置拖拽排序控件的代理
-        mPhotosSnpl.setDelegate(this);
+        // 璁剧疆鎷栨嫿鎺掑簭鎺т欢鐨勪唬鐞?        mPhotosSnpl.setDelegate(this);
     }
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
-        setTitle("添加朋友圈");
+        setTitle("娣诲姞鏈嬪弸鍦?);
 
         mEditableCb.setChecked(mPhotosSnpl.isEditable());
         mPlusCb.setChecked(mPhotosSnpl.isPlusEnable());
@@ -136,7 +129,7 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements EasyPermi
         } else if (v.getId() == R.id.tv_moment_add_publish) {
             String content = mContentEt.getText().toString().trim();
             if (content.length() == 0 && mPhotosSnpl.getItemCount() == 0) {
-                Toast.makeText(this, "必须填写这一刻的想法或选择照片！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "蹇呴』濉啓杩欎竴鍒荤殑鎯虫硶鎴栭€夋嫨鐓х墖锛?, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -160,36 +153,26 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements EasyPermi
     @Override
     public void onClickNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, String model, ArrayList<String> models) {
         Intent photoPickerPreviewIntent = new BGAPhotoPickerPreviewActivity.IntentBuilder(this)
-                .previewPhotos(models) // 当前预览的图片路径集合
-                .selectedPhotos(models) // 当前已选中的图片路径集合
-                .maxChooseCount(mPhotosSnpl.getMaxItemCount()) // 图片选择张数的最大值
-                .currentPosition(position) // 当前预览图片的索引
-                .isFromTakePhoto(false) // 是否是拍完照后跳转过来
-                .build();
+                .previewPhotos(models) // 褰撳墠棰勮鐨勫浘鐗囪矾寰勯泦鍚?                .selectedPhotos(models) // 褰撳墠宸查€変腑鐨勫浘鐗囪矾寰勯泦鍚?                .maxChooseCount(mPhotosSnpl.getMaxItemCount()) // 鍥剧墖閫夋嫨寮犳暟鐨勬渶澶у€?                .currentPosition(position) // 褰撳墠棰勮鍥剧墖鐨勭储寮?                .isFromTakePhoto(false) // 鏄惁鏄媿瀹岀収鍚庤烦杞繃鏉?                .build();
         startActivityForResult(photoPickerPreviewIntent, RC_PHOTO_PREVIEW);
     }
 
     @Override
     public void onNinePhotoItemExchanged(BGASortableNinePhotoLayout sortableNinePhotoLayout, int fromPosition, int toPosition, ArrayList<String> models) {
-        Toast.makeText(this, "排序发生变化", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "鎺掑簭鍙戠敓鍙樺寲", Toast.LENGTH_SHORT).show();
     }
 
     @AfterPermissionGranted(PRC_PHOTO_PICKER)
     private void choicePhotoWrapper() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
         if (EasyPermissions.hasPermissions(this, perms)) {
-            // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话就没有拍照功能
-            File takePhotoDir = new File(Environment.getExternalStorageDirectory(), "BGAPhotoPickerTakePhoto");
+            // 鎷嶇収鍚庣収鐗囩殑瀛樻斁鐩綍锛屾敼鎴愪綘鑷繁鎷嶇収鍚庤瀛樻斁鐓х墖鐨勭洰褰曘€傚鏋滀笉浼犻€掕鍙傛暟鐨勮瘽灏辨病鏈夋媿鐓у姛鑳?            File takePhotoDir = new File(Environment.getExternalStorageDirectory(), "BGAPhotoPickerTakePhoto");
 
             Intent photoPickerIntent = new BGAPhotoPickerActivity.IntentBuilder(this)
-                    .cameraFileDir(mTakePhotoCb.isChecked() ? takePhotoDir : null) // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话则不开启图库里的拍照功能
-                    .maxChooseCount(mPhotosSnpl.getMaxItemCount() - mPhotosSnpl.getItemCount()) // 图片选择张数的最大值
-                    .selectedPhotos(null) // 当前已选中的图片路径集合
-                    .pauseOnScroll(false) // 滚动列表时是否暂停加载图片
-                    .build();
+                    .cameraFileDir(mTakePhotoCb.isChecked() ? takePhotoDir : null) // 鎷嶇収鍚庣収鐗囩殑瀛樻斁鐩綍锛屾敼鎴愪綘鑷繁鎷嶇収鍚庤瀛樻斁鐓х墖鐨勭洰褰曘€傚鏋滀笉浼犻€掕鍙傛暟鐨勮瘽鍒欎笉寮€鍚浘搴撻噷鐨勬媿鐓у姛鑳?                    .maxChooseCount(mPhotosSnpl.getMaxItemCount() - mPhotosSnpl.getItemCount()) // 鍥剧墖閫夋嫨寮犳暟鐨勬渶澶у€?                    .selectedPhotos(null) // 褰撳墠宸查€変腑鐨勫浘鐗囪矾寰勯泦鍚?                    .pauseOnScroll(false) // 婊氬姩鍒楄〃鏃舵槸鍚︽殏鍋滃姞杞藉浘鐗?                    .build();
             startActivityForResult(photoPickerIntent, RC_CHOOSE_PHOTO);
         } else {
-            EasyPermissions.requestPermissions(this, "图片选择需要以下权限:\n\n1.访问设备上的照片\n\n2.拍照", PRC_PHOTO_PICKER, perms);
+            EasyPermissions.requestPermissions(this, "鍥剧墖閫夋嫨闇€瑕佷互涓嬫潈闄?\n\n1.璁块棶璁惧涓婄殑鐓х墖\n\n2.鎷嶇収", PRC_PHOTO_PICKER, perms);
         }
     }
 
@@ -206,7 +189,7 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements EasyPermi
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
         if (requestCode == PRC_PHOTO_PICKER) {
-            Toast.makeText(this, "您拒绝了「图片选择」所需要的相关权限!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "鎮ㄦ嫆缁濅簡銆屽浘鐗囬€夋嫨銆嶆墍闇€瑕佺殑鐩稿叧鏉冮檺!", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -19,14 +19,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.view.View;
 import android.widget.ImageView;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/25 下午4:30
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/25 涓嬪崍4:30
+ * 鎻忚堪:
  */
 public abstract class BGAImageLoader {
 

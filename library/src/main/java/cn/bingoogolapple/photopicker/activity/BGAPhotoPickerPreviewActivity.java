@@ -18,9 +18,9 @@ package cn.bingoogolapple.photopicker.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
+import androidx.core.view.ViewCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.core.view.ViewPropertyAnimatorListenerAdapter;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,9 +39,9 @@ import cn.bingoogolapple.photopicker.widget.BGAHackyViewPager;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/24 下午2:57
- * 描述:图片选择预览界面
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/24 涓嬪崍2:57
+ * 鎻忚堪:鍥剧墖閫夋嫨棰勮鐣岄潰
  */
 public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implements PhotoViewAttacher.OnViewTapListener {
     private static final String EXTRA_PREVIEW_PHOTOS = "EXTRA_PREVIEW_PHOTOS";
@@ -60,18 +60,15 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
     private BGAPhotoPageAdapter mPhotoPageAdapter;
     private int mMaxChooseCount = 1;
     /**
-     * 右上角按钮文本
-     */
+     * 鍙充笂瑙掓寜閽枃鏈?     */
     private String mTopRightBtnText;
 
     private boolean mIsHidden = false;
     /**
-     * 上一次标题栏显示或隐藏的时间戳
-     */
+     * 涓婁竴娆℃爣棰樻爮鏄剧ず鎴栭殣钘忕殑鏃堕棿鎴?     */
     private long mLastShowHiddenTime;
     /**
-     * 是否是拍完照后跳转过来
-     */
+     * 鏄惁鏄媿瀹岀収鍚庤烦杞繃鏉?     */
     private boolean mIsFromTakePhoto;
 
     public static class IntentBuilder {
@@ -82,40 +79,35 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
         }
 
         /**
-         * 图片选择张数的最大值
-         */
+         * 鍥剧墖閫夋嫨寮犳暟鐨勬渶澶у€?         */
         public IntentBuilder maxChooseCount(int maxChooseCount) {
             mIntent.putExtra(EXTRA_MAX_CHOOSE_COUNT, maxChooseCount);
             return this;
         }
 
         /**
-         * 当前已选中的图片路径集合
-         */
+         * 褰撳墠宸查€変腑鐨勫浘鐗囪矾寰勯泦鍚?         */
         public IntentBuilder selectedPhotos(ArrayList<String> selectedPhotos) {
             mIntent.putStringArrayListExtra(EXTRA_SELECTED_PHOTOS, selectedPhotos);
             return this;
         }
 
         /**
-         * 当前预览的图片路径集合
-         */
+         * 褰撳墠棰勮鐨勫浘鐗囪矾寰勯泦鍚?         */
         public IntentBuilder previewPhotos(ArrayList<String> previewPhotos) {
             mIntent.putStringArrayListExtra(EXTRA_PREVIEW_PHOTOS, previewPhotos);
             return this;
         }
 
         /**
-         * 当前预览图片的索引
-         */
+         * 褰撳墠棰勮鍥剧墖鐨勭储寮?         */
         public IntentBuilder currentPosition(int currentPosition) {
             mIntent.putExtra(EXTRA_CURRENT_POSITION, currentPosition);
             return this;
         }
 
         /**
-         * 是否是拍完照后跳转过来
-         */
+         * 鏄惁鏄媿瀹岀収鍚庤烦杞繃鏉?         */
         public IntentBuilder isFromTakePhoto(boolean isFromTakePhoto) {
             mIntent.putExtra(EXTRA_IS_FROM_TAKE_PHOTO, isFromTakePhoto);
             return this;
@@ -127,8 +119,7 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
     }
 
     /**
-     * 获取已选择的图片集合
-     *
+     * 鑾峰彇宸查€夋嫨鐨勫浘鐗囬泦鍚?     *
      * @param intent
      * @return
      */
@@ -137,8 +128,7 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
     }
 
     /**
-     * 是否是拍照预览
-     *
+     * 鏄惁鏄媿鐓ч瑙?     *
      * @param intent
      * @return
      */
@@ -166,15 +156,13 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
                     renderTopRightBtn();
                 } else {
                     if (mMaxChooseCount == 1) {
-                        // 单选
-
+                        // 鍗曢€?
                         mSelectedPhotos.clear();
                         mSelectedPhotos.add(currentPhoto);
                         mChooseTv.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.bga_pp_ic_cb_checked, 0, 0, 0);
                         renderTopRightBtn();
                     } else {
-                        // 多选
-
+                        // 澶氶€?
                         if (mMaxChooseCount == mSelectedPhotos.size()) {
                             BGAPhotoPickerUtil.show(getString(R.string.bga_pp_toast_photo_picker_max, mMaxChooseCount));
                         } else {
@@ -197,7 +185,6 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
-        // 获取图片选择的最大张数
         mMaxChooseCount = getIntent().getIntExtra(EXTRA_MAX_CHOOSE_COUNT, 1);
         if (mMaxChooseCount < 1) {
             mMaxChooseCount = 1;
@@ -210,19 +197,16 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
 
         ArrayList<String> previewPhotos = getIntent().getStringArrayListExtra(EXTRA_PREVIEW_PHOTOS);
         if (TextUtils.isEmpty(previewPhotos.get(0))) {
-            // 从BGAPhotoPickerActivity跳转过来时，如果有开启拍照功能，则第0项为""
+            // 浠嶣GAPhotoPickerActivity璺宠浆杩囨潵鏃讹紝濡傛灉鏈夊紑鍚媿鐓у姛鑳斤紝鍒欑0椤逛负""
             previewPhotos.remove(0);
         }
 
-        // 处理是否是拍完照后跳转过来
         mIsFromTakePhoto = getIntent().getBooleanExtra(EXTRA_IS_FROM_TAKE_PHOTO, false);
         if (mIsFromTakePhoto) {
-            // 如果是拍完照后跳转过来，一直隐藏底部选择栏
             mChooseRl.setVisibility(View.INVISIBLE);
         }
         int currentPosition = getIntent().getIntExtra(EXTRA_CURRENT_POSITION, 0);
 
-        // 获取右上角按钮文本
         mTopRightBtnText = getString(R.string.bga_pp_confirm);
 
 
@@ -231,7 +215,6 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
         mContentHvp.setCurrentItem(currentPosition);
 
 
-        // 过2秒隐藏标题栏和底部选择栏
         mToolbar.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -288,8 +271,7 @@ public class BGAPhotoPickerPreviewActivity extends BGAPPToolbarActivity implemen
     }
 
     /**
-     * 渲染右上角按钮
-     */
+     * 娓叉煋鍙充笂瑙掓寜閽?     */
     private void renderTopRightBtn() {
         if (mIsFromTakePhoto) {
             mSubmitTv.setEnabled(true);

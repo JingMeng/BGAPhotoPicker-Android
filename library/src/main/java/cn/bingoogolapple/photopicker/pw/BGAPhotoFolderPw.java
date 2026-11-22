@@ -18,9 +18,9 @@ package cn.bingoogolapple.photopicker.pw;
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +39,9 @@ import cn.bingoogolapple.photopicker.util.BGAPhotoPickerUtil;
 
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/24 下午6:19
- * 描述:选择图片目录的PopupWindow
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/24 涓嬪崍6:19
+ * 鎻忚堪:閫夋嫨鍥剧墖鐩綍鐨凱opupWindow
  */
 public class BGAPhotoFolderPw extends BGABasePopupWindow implements BGAOnRVItemClickListener {
     public static final int ANIM_DURATION = 300;
@@ -79,7 +79,7 @@ public class BGAPhotoFolderPw extends BGABasePopupWindow implements BGAOnRVItemC
     }
 
     /**
-     * 设置目录数据集合
+     * 璁剧疆鐩綍鏁版嵁闆嗗悎
      *
      * @param data
      */

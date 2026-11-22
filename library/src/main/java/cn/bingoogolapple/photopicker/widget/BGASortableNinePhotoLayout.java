@@ -19,12 +19,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -43,13 +43,12 @@ import cn.bingoogolapple.photopicker.R;
 import cn.bingoogolapple.photopicker.imageloader.BGAImage;
 import cn.bingoogolapple.photopicker.util.BGAPhotoPickerUtil;
 
-import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE;
+import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/7/8 下午4:51
- * 描述:拖拽排序九宫格图片控件
- */
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/7/8 涓嬪崍4:51
+ * 鎻忚堪:鎷栨嫿鎺掑簭涔濆鏍煎浘鐗囨帶浠? */
 public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnItemChildClickListener, BGAOnRVItemClickListener {
     private PhotoAdapter mPhotoAdapter;
     private ItemTouchHelper mItemTouchHelper;
@@ -166,7 +165,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置是否可拖拽排序，默认值为 true
+     * 璁剧疆鏄惁鍙嫋鎷芥帓搴忥紝榛樿鍊间负 true
      *
      * @param sortable
      */
@@ -175,8 +174,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 获取是否可拖拽排序
-     *
+     * 鑾峰彇鏄惁鍙嫋鎷芥帓搴?     *
      * @return
      */
     public boolean isSortable() {
@@ -184,7 +182,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置是否可编辑，默认值为 true
+     * 璁剧疆鏄惁鍙紪杈戯紝榛樿鍊间负 true
      *
      * @param editable
      */
@@ -194,8 +192,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 获取是否可编辑
-     *
+     * 鑾峰彇鏄惁鍙紪杈?     *
      * @return
      */
     public boolean isEditable() {
@@ -203,7 +200,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置删除按钮图片资源id，默认值为
+     * 璁剧疆鍒犻櫎鎸夐挳鍥剧墖璧勬簮id锛岄粯璁ゅ€间负
      *
      * @param deleteDrawableResId
      */
@@ -213,7 +210,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置删除按钮是否重叠四分之一，默认值为 false
+     * 璁剧疆鍒犻櫎鎸夐挳鏄惁閲嶅彔鍥涘垎涔嬩竴锛岄粯璁ゅ€间负 false
      *
      * @param deleteDrawableOverlapQuarter
      */
@@ -223,7 +220,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 计算图片右上角 margin
+     * 璁＄畻鍥剧墖鍙充笂瑙?margin
      */
     private void calculatePhotoTopRightMargin() {
         if (mDeleteDrawableOverlapQuarter) {
@@ -236,7 +233,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置可选择图片的总张数,默认值为 9
+     * 璁剧疆鍙€夋嫨鍥剧墖鐨勬€诲紶鏁?榛樿鍊间负 9
      *
      * @param maxItemCount
      */
@@ -245,8 +242,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 获取选择的图片的最大张数
-     *
+     * 鑾峰彇閫夋嫨鐨勫浘鐗囩殑鏈€澶у紶鏁?     *
      * @return
      */
     public int getMaxItemCount() {
@@ -254,7 +250,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置列数,默认值为 3
+     * 璁剧疆鍒楁暟,榛樿鍊间负 3
      *
      * @param itemSpanCount
      */
@@ -264,7 +260,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置添加按钮图片，默认值为 R.mipmap.bga_pp_ic_plus
+     * 璁剧疆娣诲姞鎸夐挳鍥剧墖锛岄粯璁ゅ€间负 R.mipmap.bga_pp_ic_plus
      *
      * @param plusDrawableResId
      */
@@ -273,7 +269,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置 Item 条目圆角尺寸，默认值为 0dp
+     * 璁剧疆 Item 鏉＄洰鍦嗚灏哄锛岄粯璁ゅ€间负 0dp
      *
      * @param itemCornerRadius
      */
@@ -282,7 +278,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置图片路径数据集合
+     * 璁剧疆鍥剧墖璺緞鏁版嵁闆嗗悎
      *
      * @param photos
      */
@@ -291,8 +287,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 在集合尾部添加更多数据集合
-     *
+     * 鍦ㄩ泦鍚堝熬閮ㄦ坊鍔犳洿澶氭暟鎹泦鍚?     *
      * @param photos
      */
     public void addMoreData(ArrayList<String> photos) {
@@ -303,8 +298,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 在集合的尾部添加一条数据
-     *
+     * 鍦ㄩ泦鍚堢殑灏鹃儴娣诲姞涓€鏉℃暟鎹?     *
      * @param photo
      */
     public void addLastItem(String photo) {
@@ -339,7 +333,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 获取图片路径数据集合
+     * 鑾峰彇鍥剧墖璺緞鏁版嵁闆嗗悎
      *
      * @return
      */
@@ -348,8 +342,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 删除指定索引位置的图片
-     *
+     * 鍒犻櫎鎸囧畾绱㈠紩浣嶇疆鐨勫浘鐗?     *
      * @param position
      */
     public void removeItem(int position) {
@@ -357,7 +350,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 获取图片总数
+     * 鑾峰彇鍥剧墖鎬绘暟
      *
      * @return
      */
@@ -386,7 +379,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 设置是否显示加号
+     * 璁剧疆鏄惁鏄剧ず鍔犲彿
      *
      * @param plusEnable
      */
@@ -396,7 +389,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements BGAOnIte
     }
 
     /**
-     * 是否显示加号按钮
+     * 鏄惁鏄剧ず鍔犲彿鎸夐挳
      *
      * @return
      */

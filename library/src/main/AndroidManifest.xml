@@ -1,12 +1,12 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.bingoogolapple.photopicker">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application>
-        <!--图片预览界面-->
+        <!--?????????-->
         <activity
             android:name="cn.bingoogolapple.photopicker.activity.BGAPhotoPreviewActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -14,7 +14,7 @@
             android:theme="@style/BGAPPTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <!--图片选择界面-->
+        <!--?????????-->
         <activity
             android:name="cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -22,7 +22,7 @@
             android:theme="@style/BGAPPTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <!--图片选择预览界面-->
+        <!--????????????-->
         <activity
             android:name="cn.bingoogolapple.photopicker.activity.BGAPhotoPickerPreviewActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

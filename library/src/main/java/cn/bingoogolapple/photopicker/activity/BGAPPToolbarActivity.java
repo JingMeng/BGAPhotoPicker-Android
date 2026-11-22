@@ -16,11 +16,11 @@
 package cn.bingoogolapple.photopicker.activity;
 
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.ViewStubCompat;
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.ViewStubCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -28,9 +28,9 @@ import android.widget.RelativeLayout;
 import cn.bingoogolapple.photopicker.R;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/24 下午2:32
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/24 涓嬪崍2:32
+ * 鎻忚堪:
  */
 public abstract class BGAPPToolbarActivity extends AppCompatActivity {
     protected String TAG;
@@ -47,17 +47,16 @@ public abstract class BGAPPToolbarActivity extends AppCompatActivity {
     }
 
     /**
-     * 初始化布局以及View控件
+     * 鍒濆鍖栧竷灞€浠ュ強View鎺т欢
      */
     protected abstract void initView(Bundle savedInstanceState);
 
     /**
-     * 给View控件添加事件监听器
-     */
+     * 缁橵iew鎺т欢娣诲姞浜嬩欢鐩戝惉鍣?     */
     protected abstract void setListener();
 
     /**
-     * 处理业务逻辑，状态恢复等操作
+     * 澶勭悊涓氬姟閫昏緫锛岀姸鎬佹仮澶嶇瓑鎿嶄綔
      *
      * @param savedInstanceState
      */

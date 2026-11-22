@@ -18,12 +18,12 @@ package cn.bingoogolapple.photopicker.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.appcompat.app.AppCompatDialog;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,9 +50,9 @@ import cn.bingoogolapple.photopicker.util.BGALoadPhotoTask;
 import cn.bingoogolapple.photopicker.util.BGAPhotoPickerUtil;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/24 下午2:55
- * 描述:图片选择界面
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/24 涓嬪崍2:55
+ * 鎻忚堪:鍥剧墖閫夋嫨鐣岄潰
  */
 public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAOnItemChildClickListener, BGAAsyncTask.Callback<ArrayList<BGAPhotoFolderModel>> {
     private static final String EXTRA_CAMERA_FILE_DIR = "EXTRA_CAMERA_FILE_DIR";
@@ -63,11 +63,11 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     private static final String STATE_SELECTED_PHOTOS = "STATE_SELECTED_PHOTOS";
 
     /**
-     * 拍照的请求码
+     * 鎷嶇収鐨勮姹傜爜
      */
     private static final int REQUEST_CODE_TAKE_PHOTO = 1;
     /**
-     * 预览照片的请求码
+     * 棰勮鐓х墖鐨勮姹傜爜
      */
     private static final int RC_PREVIEW = 2;
 
@@ -81,19 +81,17 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     private BGAPhotoFolderModel mCurrentPhotoFolderModel;
 
     /**
-     * 是否可以拍照
+     * 鏄惁鍙互鎷嶇収
      */
     private boolean mTakePhotoEnabled;
     /**
-     * 最多选择多少张图片，默认等于1，为单选
-     */
+     * 鏈€澶氶€夋嫨澶氬皯寮犲浘鐗囷紝榛樿绛変簬1锛屼负鍗曢€?     */
     private int mMaxChooseCount = 1;
     /**
-     * 右上角按钮文本
-     */
+     * 鍙充笂瑙掓寜閽枃鏈?     */
     private String mTopRightBtnText;
     /**
-     * 图片目录数据集合
+     * 鍥剧墖鐩綍鏁版嵁闆嗗悎
      */
     private ArrayList<BGAPhotoFolderModel> mPhotoFolderModels;
 
@@ -123,7 +121,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
         }
 
         /**
-         * 拍照后图片保存的目录。如果传 null 表示没有拍照功能，如果不为 null 则具有拍照功能，
+         * 鎷嶇収鍚庡浘鐗囦繚瀛樼殑鐩綍銆傚鏋滀紶 null 琛ㄧず娌℃湁鎷嶇収鍔熻兘锛屽鏋滀笉涓?null 鍒欏叿鏈夋媿鐓у姛鑳斤紝
          */
         public IntentBuilder cameraFileDir(@Nullable File cameraFileDir) {
             mIntent.putExtra(EXTRA_CAMERA_FILE_DIR, cameraFileDir);
@@ -131,8 +129,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
         }
 
         /**
-         * 图片选择张数的最大值
-         *
+         * 鍥剧墖閫夋嫨寮犳暟鐨勬渶澶у€?         *
          * @param maxChooseCount
          * @return
          */
@@ -142,7 +139,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
         }
 
         /**
-         * 当前已选中的图片路径集合，可以传 null
+         * 褰撳墠宸查€変腑鐨勫浘鐗囪矾寰勯泦鍚堬紝鍙互浼?null
          */
         public IntentBuilder selectedPhotos(@Nullable ArrayList<String> selectedPhotos) {
             mIntent.putStringArrayListExtra(EXTRA_SELECTED_PHOTOS, selectedPhotos);
@@ -150,7 +147,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
         }
 
         /**
-         * 滚动列表时是否暂停加载图片，默认为 false
+         * 婊氬姩鍒楄〃鏃舵槸鍚︽殏鍋滃姞杞藉浘鐗囷紝榛樿涓?false
          */
         public IntentBuilder pauseOnScroll(boolean pauseOnScroll) {
             mIntent.putExtra(EXTRA_PAUSE_ON_SCROLL, pauseOnScroll);
@@ -163,8 +160,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 获取已选择的图片集合
-     *
+     * 鑾峰彇宸查€夋嫨鐨勫浘鐗囬泦鍚?     *
      * @param intent
      * @return
      */
@@ -190,19 +186,17 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
-        // 获取拍照图片保存目录
+        // 鑾峰彇鎷嶇収鍥剧墖淇濆瓨鐩綍
         File cameraFileDir = (File) getIntent().getSerializableExtra(EXTRA_CAMERA_FILE_DIR);
         if (cameraFileDir != null) {
             mTakePhotoEnabled = true;
             mPhotoHelper = new BGAPhotoHelper(cameraFileDir);
         }
-        // 获取图片选择的最大张数
         mMaxChooseCount = getIntent().getIntExtra(EXTRA_MAX_CHOOSE_COUNT, 1);
         if (mMaxChooseCount < 1) {
             mMaxChooseCount = 1;
         }
 
-        // 获取右上角按钮文本
         mTopRightBtnText = getString(R.string.bga_pp_confirm);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, SPAN_COUNT, LinearLayoutManager.VERTICAL, false);
@@ -272,8 +266,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 返回已选中的图片集合
-     *
+     * 杩斿洖宸查€変腑鐨勫浘鐗囬泦鍚?     *
      * @param selectedPhotos
      */
     private void returnSelectedPhotos(ArrayList<String> selectedPhotos) {
@@ -308,8 +301,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 显示只能选择 mMaxChooseCount 张图的提示
-     */
+     * 鏄剧ず鍙兘閫夋嫨 mMaxChooseCount 寮犲浘鐨勬彁绀?     */
     private void toastMaxCountTip() {
         BGAPhotoPickerUtil.show(getString(R.string.bga_pp_toast_photo_picker_max, mMaxChooseCount));
     }
@@ -331,7 +323,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
                 startActivityForResult(photoPickerPreview, RC_PREVIEW);
             } else if (requestCode == RC_PREVIEW) {
                 if (BGAPhotoPickerPreviewActivity.getIsFromTakePhoto(data)) {
-                    // 从拍照预览界面返回，刷新图库
+                    // 浠庢媿鐓ч瑙堢晫闈㈣繑鍥烇紝鍒锋柊鍥惧簱
                     mPhotoHelper.refreshGallery();
                 }
 
@@ -339,7 +331,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
             }
         } else if (resultCode == RESULT_CANCELED && requestCode == RC_PREVIEW) {
             if (BGAPhotoPickerPreviewActivity.getIsFromTakePhoto(data)) {
-                // 从拍照预览界面返回，删除之前拍的照片
+                // 浠庢媿鐓ч瑙堢晫闈㈣繑鍥烇紝鍒犻櫎涔嬪墠鎷嶇殑鐓х墖
                 mPhotoHelper.deleteCameraFile();
             } else {
                 mPicAdapter.setSelectedPhotos(BGAPhotoPickerPreviewActivity.getSelectedPhotos(data));
@@ -349,8 +341,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 渲染右上角按钮
-     */
+     * 娓叉煋鍙充笂瑙掓寜閽?     */
     private void renderTopRightBtn() {
         if (mSubmitTv == null) {
             return;
@@ -391,11 +382,10 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 处理拍照
+     * 澶勭悊鎷嶇収
      */
     private void handleTakePhoto() {
         if (mMaxChooseCount == 1) {
-            // 单选
             takePhoto();
         } else if (mPicAdapter.getSelectedCount() == mMaxChooseCount) {
             toastMaxCountTip();
@@ -405,7 +395,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 拍照
+     * 鎷嶇収
      */
     private void takePhoto() {
         try {
@@ -416,10 +406,9 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 跳转到图片选择预览界面
+     * 璺宠浆鍒板浘鐗囬€夋嫨棰勮鐣岄潰
      *
-     * @param position 当前点击的item的索引位置
-     */
+     * @param position 褰撳墠鐐瑰嚮鐨刬tem鐨勭储寮曚綅缃?     */
     private void changeToPreview(int position) {
         int currentPosition = position;
         if (mCurrentPhotoFolderModel.isTakePhotoEnabled()) {
@@ -437,15 +426,13 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
     }
 
     /**
-     * 处理点击选择按钮事件
+     * 澶勭悊鐐瑰嚮閫夋嫨鎸夐挳浜嬩欢
      *
-     * @param position 当前点击的item的索引位置
-     */
+     * @param position 褰撳墠鐐瑰嚮鐨刬tem鐨勭储寮曚綅缃?     */
     private void handleClickSelectFlagIv(int position) {
         String currentPhoto = mPicAdapter.getItem(position);
         if (mMaxChooseCount == 1) {
-            // 单选
-
+            // 鍗曢€?
             if (mPicAdapter.getSelectedCount() > 0) {
                 String selectedPhoto = mPicAdapter.getSelectedPhotos().remove(0);
                 if (TextUtils.equals(selectedPhoto, currentPhoto)) {
@@ -462,8 +449,7 @@ public class BGAPhotoPickerActivity extends BGAPPToolbarActivity implements BGAO
             }
             renderTopRightBtn();
         } else {
-            // 多选
-
+            // 澶氶€?
             if (!mPicAdapter.getSelectedPhotos().contains(currentPhoto) && mPicAdapter.getSelectedCount() == mMaxChooseCount) {
                 toastMaxCountTip();
             } else {

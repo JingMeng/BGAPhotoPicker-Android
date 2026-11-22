@@ -18,16 +18,16 @@ package cn.bingoogolapple.photopicker.pw;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.PopupWindow;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/24 下午6:19
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/24 涓嬪崍6:19
+ * 鎻忚堪:
  */
 public abstract class BGABasePopupWindow extends PopupWindow implements View.OnClickListener {
     protected Activity mActivity;
@@ -54,7 +54,6 @@ public abstract class BGABasePopupWindow extends PopupWindow implements View.OnC
                 return false;
             }
         });
-        // 如果想让在点击别的地方的时候 关闭掉弹出窗体 一定要记得给mPopupWindow设置一个背景资源
         setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         mAnchorView = anchorView;
@@ -75,10 +74,10 @@ public abstract class BGABasePopupWindow extends PopupWindow implements View.OnC
     }
 
     /**
-     * 查找View
+     * 鏌ユ壘View
      *
-     * @param id   控件的id
-     * @param <VT> View类型
+     * @param id   鎺т欢鐨刬d
+     * @param <VT> View绫诲瀷
      * @return
      */
     protected <VT extends View> VT findViewById(@IdRes int id) {

@@ -16,12 +16,12 @@
 package cn.bingoogolapple.photopicker.imageloader;
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/9/8 下午1:05
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/9/8 涓嬪崍1:05
+ * 鎻忚堪:
  */
 public class BGARVOnScrollListener extends RecyclerView.OnScrollListener {
     private Activity mActivity;
@@ -39,3 +39,4 @@ public class BGARVOnScrollListener extends RecyclerView.OnScrollListener {
         }
     }
 }
+

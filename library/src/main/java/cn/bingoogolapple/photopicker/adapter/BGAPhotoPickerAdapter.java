@@ -15,7 +15,7 @@
  */
 package cn.bingoogolapple.photopicker.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -27,9 +27,9 @@ import cn.bingoogolapple.photopicker.model.BGAPhotoFolderModel;
 import cn.bingoogolapple.photopicker.util.BGAPhotoPickerUtil;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/28 上午11:09
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/28 涓婂崍11:09
+ * 鎻忚堪:
  */
 public class BGAPhotoPickerAdapter extends BGARecyclerViewAdapter<String> {
     private ArrayList<String> mSelectedPhotos = new ArrayList<>();
@@ -95,3 +95,4 @@ public class BGAPhotoPickerAdapter extends BGARecyclerViewAdapter<String> {
         setData(photoFolderModel.getPhotos());
     }
 }
+

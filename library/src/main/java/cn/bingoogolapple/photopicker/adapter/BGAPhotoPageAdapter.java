@@ -16,7 +16,7 @@
 package cn.bingoogolapple.photopicker.adapter;
 
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -30,10 +30,9 @@ import cn.bingoogolapple.photopicker.widget.BGAImageView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/27 下午6:35
- * 描述:大图预览适配器
- */
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/27 涓嬪崍6:35
+ * 鎻忚堪:澶у浘棰勮閫傞厤鍣? */
 public class BGAPhotoPageAdapter extends PagerAdapter {
     private ArrayList<String> mPreviewPhotos;
     private PhotoViewAttacher.OnViewTapListener mOnViewTapListener;

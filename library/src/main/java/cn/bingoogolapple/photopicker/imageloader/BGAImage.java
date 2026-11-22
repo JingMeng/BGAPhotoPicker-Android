@@ -16,14 +16,14 @@
 package cn.bingoogolapple.photopicker.imageloader;
 
 import android.app.Activity;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.util.Log;
 import android.widget.ImageView;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/25 下午5:03
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/25 涓嬪崍5:03
+ * 鎻忚堪:
  */
 public class BGAImage {
     private static final String TAG = BGAImage.class.getSimpleName();
@@ -45,7 +45,7 @@ public class BGAImage {
                     } else if (isClassExists("org.xutils.x")) {
                         sImageLoader = new BGAXUtilsImageLoader();
                     } else {
-                        throw new RuntimeException("必须在你的build.gradle文件中配置「Glide、Picasso、universal-image-loader、XUtils3」中的某一个图片加载库的依赖");
+                        throw new RuntimeException("请配置 Glide、Picasso、Universal Image Loader 或 xUtils 图片加载库依赖");
                     }
                 }
             }
@@ -54,7 +54,7 @@ public class BGAImage {
     }
 
     /**
-     * 设置开发者自定义 ImageLoader
+     * 璁剧疆寮€鍙戣€呰嚜瀹氫箟 ImageLoader
      *
      * @param imageLoader
      */
@@ -100,7 +100,7 @@ public class BGAImage {
     }
 
     /**
-     * 暂停加载
+     * 鏆傚仠鍔犺浇
      *
      * @param activity
      */
@@ -115,3 +115,4 @@ public class BGAImage {
         getImageLoader().resume(activity);
     }
 }
+

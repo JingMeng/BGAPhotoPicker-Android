@@ -18,8 +18,8 @@ package cn.bingoogolapple.photopicker.imageloader;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -34,9 +34,9 @@ import com.bumptech.glide.request.transition.Transition;
 import cn.bingoogolapple.baseadapter.BGABaseAdapterUtil;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:16/6/25 下午4:40
- * 描述:
+ * 浣滆€?鐜嬫旦 閭欢:bingoogolapple@gmail.com
+ * 鍒涘缓鏃堕棿:16/6/25 涓嬪崍4:40
+ * 鎻忚堪:
  */
 public class BGAGlideImageLoader extends BGAImageLoader {
 
